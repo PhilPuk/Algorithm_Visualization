@@ -1,0 +1,120 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SFML Algorithms  and Datastructures", "[SFML Projects] Mouse Shooter\[SFML Projects] Mouse Shooter.vcxproj", "{45EF9F38-9F29-43D9-9DB4-A4A3EBA786D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graphics", "Graphics", "{FC249634-3728-4205-9F5F-BBAD2591C868}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Light.h = [SFML Projects] Mouse Shooter\Light.h
+		[SFML Projects] Mouse Shooter\LightManager.h = [SFML Projects] Mouse Shooter\LightManager.h
+		[SFML Projects] Mouse Shooter\TextureManager.h = [SFML Projects] Mouse Shooter\TextureManager.h
+		[SFML Projects] Mouse Shooter\Tracing.h = [SFML Projects] Mouse Shooter\Tracing.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graphics", "Graphics", "{A10E85CD-9997-4E4C-B4F8-EC2F9EA6EAA0}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Light.cpp = [SFML Projects] Mouse Shooter\Light.cpp
+		[SFML Projects] Mouse Shooter\LightManager.cpp = [SFML Projects] Mouse Shooter\LightManager.cpp
+		[SFML Projects] Mouse Shooter\TextureManager.cpp = [SFML Projects] Mouse Shooter\TextureManager.cpp
+		[SFML Projects] Mouse Shooter\Tracing.cpp = [SFML Projects] Mouse Shooter\Tracing.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{5DED46D7-C75E-4F2B-A13A-E15144C59BF7}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Game.h = [SFML Projects] Mouse Shooter\Game.h
+		[SFML Projects] Mouse Shooter\Menu.h = [SFML Projects] Mouse Shooter\Menu.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{8126ABF3-3AC6-42E8-AEDF-118D41F3FC85}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Game.cpp = [SFML Projects] Mouse Shooter\Game.cpp
+		[SFML Projects] Mouse Shooter\Menu.cpp = [SFML Projects] Mouse Shooter\Menu.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generation", "Generation", "{8ACC42FB-23B8-4467-A769-C59DA3D51B56}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Generation.h = [SFML Projects] Mouse Shooter\Generation.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generation", "Generation", "{9C249E7E-D820-4FED-93C1-B9E80AD00364}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Generation.cpp = [SFML Projects] Mouse Shooter\Generation.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{27339D11-0284-4BF2-8442-A0DE7709B4C4}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\main.cpp = [SFML Projects] Mouse Shooter\main.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Header", "Header", "{6E05647C-448A-459D-B250-A79DC13CFE3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Menu", "Menu", "{6AC18003-76D9-4EE5-97C6-2877FA7FA6B5}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Menu.h = [SFML Projects] Mouse Shooter\Menu.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Menu", "Menu", "{81510725-3D3B-4BD4-A97F-D912CBAE4228}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Menu.cpp = [SFML Projects] Mouse Shooter\Menu.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BrickManager", "BrickManager", "{029428A2-A95F-49DE-A14C-6932D927E8CF}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\BrickManager.h = [SFML Projects] Mouse Shooter\BrickManager.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BrickManager", "BrickManager", "{9F0A77AB-1329-4326-92A2-B29E0C088B1E}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\BrickManager.cpp = [SFML Projects] Mouse Shooter\BrickManager.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Brick", "Brick", "{7A1DD4A4-0E50-400D-80A7-EB109F788C5C}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Brick.cpp = [SFML Projects] Mouse Shooter\Brick.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Brick", "Brick", "{DB396689-D169-471D-A2F3-BCAB76405CE2}"
+	ProjectSection(SolutionItems) = preProject
+		[SFML Projects] Mouse Shooter\Brick.h = [SFML Projects] Mouse Shooter\Brick.h
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45EF9F38-9F29-43D9-9DB4-A4A3EBA786D6}.Debug|x64.ActiveCfg = Debug|x64
+		{45EF9F38-9F29-43D9-9DB4-A4A3EBA786D6}.Debug|x64.Build.0 = Debug|x64
+		{45EF9F38-9F29-43D9-9DB4-A4A3EBA786D6}.Debug|x86.ActiveCfg = Debug|Win32
+		{45EF9F38-9F29-43D9-9DB4-A4A3EBA786D6}.Debug|x86.Build.0 = Debug|Win32
+		{45EF9F38-9F29-43D9-9DB4-A4A3EBA786D6}.Release|x64.ActiveCfg = Release|x64
+		{45EF9F38-9F29-43D9-9DB4-A4A3EBA786D6}.Release|x64.Build.0 = Release|x64
+		{45EF9F38-9F29-43D9-9DB4-A4A3EBA786D6}.Release|x86.ActiveCfg = Release|Win32
+		{45EF9F38-9F29-43D9-9DB4-A4A3EBA786D6}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC249634-3728-4205-9F5F-BBAD2591C868} = {6E05647C-448A-459D-B250-A79DC13CFE3D}
+		{A10E85CD-9997-4E4C-B4F8-EC2F9EA6EAA0} = {27339D11-0284-4BF2-8442-A0DE7709B4C4}
+		{5DED46D7-C75E-4F2B-A13A-E15144C59BF7} = {6E05647C-448A-459D-B250-A79DC13CFE3D}
+		{8126ABF3-3AC6-42E8-AEDF-118D41F3FC85} = {27339D11-0284-4BF2-8442-A0DE7709B4C4}
+		{8ACC42FB-23B8-4467-A769-C59DA3D51B56} = {6E05647C-448A-459D-B250-A79DC13CFE3D}
+		{9C249E7E-D820-4FED-93C1-B9E80AD00364} = {27339D11-0284-4BF2-8442-A0DE7709B4C4}
+		{6AC18003-76D9-4EE5-97C6-2877FA7FA6B5} = {6E05647C-448A-459D-B250-A79DC13CFE3D}
+		{81510725-3D3B-4BD4-A97F-D912CBAE4228} = {27339D11-0284-4BF2-8442-A0DE7709B4C4}
+		{029428A2-A95F-49DE-A14C-6932D927E8CF} = {6E05647C-448A-459D-B250-A79DC13CFE3D}
+		{9F0A77AB-1329-4326-92A2-B29E0C088B1E} = {27339D11-0284-4BF2-8442-A0DE7709B4C4}
+		{7A1DD4A4-0E50-400D-80A7-EB109F788C5C} = {9F0A77AB-1329-4326-92A2-B29E0C088B1E}
+		{DB396689-D169-471D-A2F3-BCAB76405CE2} = {029428A2-A95F-49DE-A14C-6932D927E8CF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89CB6EA6-9BA0-412F-920B-FEF2DC6EC361}
+	EndGlobalSection
+EndGlobal

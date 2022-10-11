@@ -1,9 +1,14 @@
 #pragma once
 
-#include<iostream>
-#include"time.h"
+#define ARRAY_START_SIZE 50
 
+#include<iostream>
+#include<time.h>
+
+#include"Generation.h"
+#include"Algorithms.h"
 #include"TextureManager.h"
+
 
 class Game
 {
@@ -15,8 +20,11 @@ private:
 	//Events
 	sf::Event ev;
 
-	//TextureManager
-	TextureManager textures;
+	//Generation of Array
+	Generation* gen;
+
+	//Algorithms
+	Algorithms* algo;
 
 	//End logic
 	bool endGame;
@@ -24,8 +32,10 @@ private:
 
 	void initWindow(sf::RenderWindow* window);
 	void initVariables(sf::RenderWindow* window);
+	void initGeneration();
+	void initAlgorithms(sf::Font& font);
 public:
-	Game(sf::RenderWindow* window);
+	Game(sf::RenderWindow* window, sf::Font& font);
 	virtual ~Game();
 
 	void CloseApplication();

@@ -15,15 +15,35 @@ void Game::initVariables(sf::RenderWindow* window)
     this->endApplication = false;
 }
 
-Game::Game(sf::RenderWindow* window)
+void Game::initGeneration()
+{
+    this->gen = new Generation(ARRAY_START_SIZE, ARRAY_START_SIZE, true, false);
+
+    /*
+    std::cout << "Unsorted Array\n\n";
+    for (int i = 0; i < 30; i++)
+    {
+        std::cout<<this->gen->array[i]<<"\n";
+    }
+    */
+}
+
+void Game::initAlgorithms(sf::Font& font)
+{
+    this->algo = new Algorithms(this->winSize, this->gen->array, font, true);
+}
+
+Game::Game(sf::RenderWindow* window, sf::Font& font)
 {
     this->initWindow(window);
     this->initVariables(window);
+    this->initGeneration();
+    this->initAlgorithms(font);
 }
 
 Game::~Game()
 {
-
+    delete this->gen;
 }
 
 void Game::CloseApplication()
@@ -80,11 +100,15 @@ void Game::pollEvents()
 void Game::update()
 {
     this->pollEvents();
+
+    this->algo->currentSelectedAlgo(this->gen->array, *this->window);
 }
 
 void Game::render()
 {
-    this->window->clear();
+    this->window->clear(sf::Color(150,150,150,255));
+
+    this->algo->render(*this->window);
 
     this->window->display();
 }

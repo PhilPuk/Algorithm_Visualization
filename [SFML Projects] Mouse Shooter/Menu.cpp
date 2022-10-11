@@ -77,7 +77,7 @@ void Menu::initText()
 
 void Menu::initGame()
 {
-	this->game = new Game(this->window);
+	this->game = new Game(this->window, this->font);
 }
 
 	//Menu_Navigation
