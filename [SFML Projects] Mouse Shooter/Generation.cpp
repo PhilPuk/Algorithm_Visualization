@@ -52,3 +52,12 @@ Generation::~Generation()
 
 }
 
+void Generation::printArrayInConsole()
+{
+	std::cout << "\n\nArray:\n";
+	for (auto& i : this->array)
+	{
+		std::cout << i << "\n";
+	}
+}
+

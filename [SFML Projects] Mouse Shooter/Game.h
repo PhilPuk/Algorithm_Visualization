@@ -1,6 +1,6 @@
 #pragma once
 
-#define ARRAY_START_SIZE 50
+#define ARRAY_START_SIZE 60
 
 #include<iostream>
 #include<time.h>
@@ -29,6 +29,8 @@ private:
 	//End logic
 	bool endGame;
 	bool endApplication;
+
+	bool sortedArrayPrinted;
 
 	void initWindow(sf::RenderWindow* window);
 	void initVariables(sf::RenderWindow* window);

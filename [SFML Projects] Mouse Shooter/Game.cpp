@@ -13,19 +13,15 @@ void Game::initVariables(sf::RenderWindow* window)
 {
     this->endGame = false;
     this->endApplication = false;
+
+    this->sortedArrayPrinted = false;
 }
 
 void Game::initGeneration()
 {
     this->gen = new Generation(ARRAY_START_SIZE, ARRAY_START_SIZE, true, false);
 
-    /*
-    std::cout << "Unsorted Array\n\n";
-    for (int i = 0; i < 30; i++)
-    {
-        std::cout<<this->gen->array[i]<<"\n";
-    }
-    */
+    this->gen->printArrayInConsole();
 }
 
 void Game::initAlgorithms(sf::Font& font)
@@ -44,6 +40,8 @@ Game::Game(sf::RenderWindow* window, sf::Font& font)
 Game::~Game()
 {
     delete this->gen;
+
+    delete this->algo;
 }
 
 void Game::CloseApplication()
@@ -55,6 +53,10 @@ void Game::CloseApplication()
 void Game::resetVariables()
 {
     this->initVariables(this->window);
+
+    //  Possibilty to restart the algorithms via going back to the menu and press start.
+    //  Note: Also need to rerandomize the array, this is not done yet.
+    //this->algo->resetAlgoFinished();
 }
 
 const bool& Game::getEndGame() const
@@ -102,6 +104,12 @@ void Game::update()
     this->pollEvents();
 
     this->algo->currentSelectedAlgo(this->gen->array, *this->window);
+
+    if (!this->sortedArrayPrinted)
+    {
+        this->gen->printArrayInConsole();
+        this->sortedArrayPrinted = true;
+    }
 }
 
 void Game::render()

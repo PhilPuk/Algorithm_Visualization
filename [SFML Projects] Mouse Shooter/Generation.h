@@ -23,5 +23,7 @@ public:
 	virtual ~Generation();
 
 	std::vector<int> array;
+
+	void printArrayInConsole();
 };
 

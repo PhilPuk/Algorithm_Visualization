@@ -1,4 +1,4 @@
-#include "Algorithms.h"
+﻿#include "Algorithms.h"
 
 void Algorithms::initVariables()
 {
@@ -40,10 +40,18 @@ void Algorithms::swopTwoInt(int* a, int* b)
 	*b = tmp;
 }
 
+void Algorithms::resetAlgoFinished()
+{
+	this->algoFinished = false;
+}
+
+const bool& Algorithms::getAlgoFinished() const
+{
+	return this->algoFinished;
+}
+
 void Algorithms::Bubble_Sort(std::vector<int>& array, sf::RenderWindow& window)
 {
-	if (!this->algoFinished)
-	{
 		for (int i = 0; i < array.size(); i++)
 		{
 			for (int j = i + 1; j < array.size(); j++)
@@ -63,22 +71,17 @@ void Algorithms::Bubble_Sort(std::vector<int>& array, sf::RenderWindow& window)
 
 					//Render it to the window
 					this->render(window);
-					sf::sleep(sf::milliseconds(300));
+					sf::sleep(sf::milliseconds(200));
 				}
 				//Reset last compared bricks to color black
 				this->setBricksColorBlack(i, j);
 			}
 		}
-		this->algoFinished = true;
-	}
 }
 
 void Algorithms::Selection_Sort(std::vector<int>& array, sf::RenderWindow& window)
 {
-	if (!algoFinished)
-	{
 		//First element of array is the min number in the beginning, that doesn't has to be true, it's just for comparsion.
-
 		for (int i = 0; i < array.size() - 1; i++)
 		{
 			int min_i = i;
@@ -105,20 +108,103 @@ void Algorithms::Selection_Sort(std::vector<int>& array, sf::RenderWindow& windo
 			this->bricks->bricks[min_i]->setTextInt(array[min_i]);
 			this->bricks->bricks[i]->setTextInt(array[i]);
 		}
-		this->algoFinished = true;
+}
+
+void Algorithms::merge(sf::RenderWindow& window, std::vector<int>& array, int left_index, int mid_index, int right_index)
+{
+	//Creating indexes
+	int i, j, k;
+
+	//Calculating size of the arrays
+	int left_size = mid_index - left_index + 1;
+	int right_size = right_index - mid_index;
+
+	//Creating subvectors
+	std::vector<int> left_vector, right_vector;
+
+	//Fill left vector
+	for (i = 0; i < left_size; i++)
+	{
+		left_vector.push_back(array[static_cast<std::vector<int, std::allocator<int>>::size_type>(left_index) + i]);
+	}
+	//Fill right vector
+	for (j = 0; j < right_size; j++)
+	{
+		right_vector.push_back(array[static_cast<std::vector<int, std::allocator<int>>::size_type>(mid_index) + 1 + j]);
+	}
+
+	//Reset indexes
+	i = 0, j = 0, k = left_index;
+
+	//Filling until one side is empty
+	while (i < left_size && j < right_size)
+	{
+		if (left_vector[i] <= right_vector[j])
+		{
+			array[k] = left_vector[i];
+			this->bricks->bricks[k]->setTextInt(array[k]);
+			this->renderWithBreak(window, PAUSE_TIMER);
+			i++;
+		}
+		else
+		{
+			array[k] = right_vector[j];
+			this->bricks->bricks[k]->setTextInt(array[k]);
+			this->renderWithBreak(window, PAUSE_TIMER);
+			j++;
+		}
+		k++;
+	}
+
+	//Filling the left leftovers
+	while (i < left_size)
+	{
+		array[k] = left_vector[i];
+		this->bricks->bricks[k]->setTextInt(array[k]);
+		this->renderWithBreak(window, PAUSE_TIMER);
+		i++;
+		k++;
+	}
+
+	//Filling the right leftovers
+	while (j < right_size)
+	{
+		array[k] = right_vector[j];
+		this->bricks->bricks[k]->setTextInt(array[k]);
+		this->renderWithBreak(window, PAUSE_TIMER);
+		j++;
+		k++;
 	}
 }
 
-void Algorithms::currentSelectedAlgo(std::vector<int>& array, sf::RenderWindow& window)
+void Algorithms::Merge_Sort(sf::RenderWindow& window, std::vector<int>& array, int left_index, int right_index)
 {
-	//this->Bubble_Sort(array, window);
+	int mid_index;
 
-	this->Selection_Sort(array, window);
+	//Divide
+	if (left_index < right_index)
+	{
+		mid_index = left_index + (right_index - left_index) / 2;
+
+		Merge_Sort(window, array, left_index, mid_index);
+		Merge_Sort(window, array, mid_index + 1, right_index);
+
+		merge(window, array, left_index, mid_index, right_index);
+	}
 }
 
-void Algorithms::update(std::vector<int>* array)
-{
 
+void Algorithms::currentSelectedAlgo(std::vector<int>& array, sf::RenderWindow& window)
+{
+	if (!this->algoFinished)
+	{
+		//this->Bubble_Sort(array, window);
+
+		//this->Selection_Sort(array, window);
+		this->Merge_Sort(window, array, 0 , static_cast<int>(array.size()) - 1);
+
+		this->algoFinished = true;
+	}
 }
 
 void Algorithms::renderBrickManager(sf::RenderTarget& target)
@@ -133,4 +219,10 @@ void Algorithms::render(sf::RenderWindow& target)
 	this->renderBrickManager(target);
 
 	target.display();
+}
+
+void Algorithms::renderWithBreak(sf::RenderWindow& target, unsigned int milliseconds)
+{
+	this->render(target);
+	sf::sleep(sf::milliseconds(milliseconds));
 }
