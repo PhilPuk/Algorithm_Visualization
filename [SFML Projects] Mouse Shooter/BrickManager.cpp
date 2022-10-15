@@ -26,8 +26,8 @@ void BrickManager::initBricksLine(sf::Vector2u& winSize, std::vector<int>& array
 
 void BrickManager::initBricksFullScreen(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font)
 {
-	float sizeX = 55.f;
-	float sizeY = 50.f;
+	float sizeX = 65.f;
+	float sizeY = 60.f;
 	sf::Vector2f size(sizeX, sizeY);
 	float xSpacing = sizeX * 1.25f;
 	float ySpacing = sizeY * 1.5f;

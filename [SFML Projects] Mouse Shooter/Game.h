@@ -1,6 +1,6 @@
 #pragma once
 
-#define ARRAY_START_SIZE 60
+#define ARRAY_START_SIZE 90
 
 #include<iostream>
 #include<time.h>

@@ -126,11 +126,13 @@ void Algorithms::merge(sf::RenderWindow& window, std::vector<int>& array, int le
 	for (i = 0; i < left_size; i++)
 	{
 		left_vector.push_back(array[static_cast<std::vector<int, std::allocator<int>>::size_type>(left_index) + i]);
+		this->bricks->bricks[left_index + i]->shape.setOutlineColor(sf::Color::Green);
 	}
 	//Fill right vector
 	for (j = 0; j < right_size; j++)
 	{
 		right_vector.push_back(array[static_cast<std::vector<int, std::allocator<int>>::size_type>(mid_index) + 1 + j]);
+		this->bricks->bricks[mid_index + 1 + j]->shape.setOutlineColor(sf::Color::Blue);
 	}
 
 	//Reset indexes
@@ -141,16 +143,22 @@ void Algorithms::merge(sf::RenderWindow& window, std::vector<int>& array, int le
 	{
 		if (left_vector[i] <= right_vector[j])
 		{
+			this->setBricksColorRed(i, k);
+			this->renderWithBreak(window, PAUSE_TIMER);
 			array[k] = left_vector[i];
 			this->bricks->bricks[k]->setTextInt(array[k]);
 			this->renderWithBreak(window, PAUSE_TIMER);
+			this->setBricksColorBlack(i, k);
 			i++;
 		}
 		else
 		{
+			this->setBricksColorRed(k, j);
+			this->renderWithBreak(window, PAUSE_TIMER);
 			array[k] = right_vector[j];
 			this->bricks->bricks[k]->setTextInt(array[k]);
 			this->renderWithBreak(window, PAUSE_TIMER);
+			this->setBricksColorBlack(k, j);
 			j++;
 		}
 		k++;
@@ -159,9 +167,12 @@ void Algorithms::merge(sf::RenderWindow& window, std::vector<int>& array, int le
 	//Filling the left leftovers
 	while (i < left_size)
 	{
+		this->setBricksColorRed(i, k);
+		this->renderWithBreak(window, PAUSE_TIMER);
 		array[k] = left_vector[i];
 		this->bricks->bricks[k]->setTextInt(array[k]);
 		this->renderWithBreak(window, PAUSE_TIMER);
+		this->setBricksColorBlack(i, k);
 		i++;
 		k++;
 	}
@@ -169,9 +180,12 @@ void Algorithms::merge(sf::RenderWindow& window, std::vector<int>& array, int le
 	//Filling the right leftovers
 	while (j < right_size)
 	{
+		this->setBricksColorRed(j, k);
+		this->renderWithBreak(window, PAUSE_TIMER);
 		array[k] = right_vector[j];
 		this->bricks->bricks[k]->setTextInt(array[k]);
 		this->renderWithBreak(window, PAUSE_TIMER);
+		this->setBricksColorBlack(j, k);
 		j++;
 		k++;
 	}
@@ -201,6 +215,7 @@ void Algorithms::currentSelectedAlgo(std::vector<int>& array, sf::RenderWindow& 
 		//this->Bubble_Sort(array, window);
 
 		//this->Selection_Sort(array, window);
+
 		this->Merge_Sort(window, array, 0 , static_cast<int>(array.size()) - 1);
 
 		this->algoFinished = true;

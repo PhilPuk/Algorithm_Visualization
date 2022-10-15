@@ -4,7 +4,7 @@
 #include<vector>
 #include"BrickManager.h"
 
-#define PAUSE_TIMER 50
+#define PAUSE_TIMER 100
 
 class Algorithms
 {

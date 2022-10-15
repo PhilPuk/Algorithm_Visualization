@@ -9,7 +9,7 @@ void Brick::initShape(sf::Vector2f& pos, sf::Vector2f& size)
 {
 	this->shape.setFillColor(sf::Color::White);
 	this->shape.setOutlineColor(sf::Color::Black);
-	this->shape.setOutlineThickness(2.f);
+	this->shape.setOutlineThickness(4.f);
 
 	this->shape.setSize(size);
 
@@ -29,13 +29,11 @@ void Brick::initText(sf::Font& font, sf::Vector2f& pos)
 	this->text.setFillColor(sf::Color::Black);
 	this->text.setCharacterSize(20);
 
-	this->text.setOrigin
-	(
-		this->text.getLocalBounds().left + this->text.getLocalBounds().width / 2.0f,
-		this->text.getLocalBounds().top + this->text.getLocalBounds().height / 2.0f
-	);
+	//this->text.setOrigin(this->text.getLocalBounds().left + this->text.getLocalBounds().width / 2.0f,this->text.getLocalBounds().top + this->text.getLocalBounds().height / 2.0f);
 	
-	this->text.setPosition(sf::Vector2f(pos.x - this->shape.getGlobalBounds().width / 2.f, pos.y - this->shape.getGlobalBounds().height / 2.f));
+	this->text.setPosition(sf::Vector2f(pos.x - this->shape.getGlobalBounds().width / 4.f, pos.y - this->shape.getGlobalBounds().height / 4.f));
+
+	//this->text.setPosition(sf::Vector2f(pos.x, pos.y));
 }
 
 Brick::Brick(sf::Font& font, sf::Vector2f& pos, sf::Vector2f& size)
