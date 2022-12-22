@@ -12,7 +12,7 @@ void Menu::initVariables()
 	this->Framerate = 60;
 
 	//Texts
-	this->Application_Title = "TEMPLATE";
+	this->Application_Title = "Algorithms and Datastructures";
 	this->Color_Menu = sf::Color::White;
 		//Text Pos
 	this->Vector_Menu_Pos.x = 100.f;
@@ -42,7 +42,7 @@ void Menu::initFonts()
 void Menu::initText()
 {
 	//sets all texts content
-	this->Text_Title.setString("Mouse Shooter");
+	this->Text_Title.setString("Algorithms and Datastructures");
 		//Start
 	this->Text_Menu_Options[0].setString("Start");
 		//Options

@@ -18,7 +18,7 @@ void BrickManager::initBricksLine(sf::Vector2u& winSize, std::vector<int>& array
 	//Creating the bricks
 	for (size_t i = 0; i < array.size(); i++)
 	{
-		this->bricks.push_back(new Brick(font, pos, size));
+		this->bricks.push_back(std::make_unique<Brick>(font, pos, size));
 		this->bricks[i]->setTextInt(array[i]);
 		pos.x += sizeX;
 	}
@@ -37,7 +37,7 @@ void BrickManager::initBricksFullScreen(sf::Vector2u& winSize, std::vector<int>&
 
 	for (size_t i = 0; i < array.size(); i++)
 	{
-		this->bricks.push_back(new Brick(font, pos, size));
+		this->bricks.push_back(std::make_unique<Brick>(font, pos, size));
 		this->bricks[i]->setTextInt(array[i]);
 		pos.x += xSpacing;
 
@@ -64,12 +64,7 @@ BrickManager::BrickManager(sf::Vector2u& winSize, std::vector<int>& array, sf::F
 
 BrickManager::~BrickManager()
 {
-	//Delete all bricks
-	for (size_t i = 0; i < this->bricks.size(); i++)
-	{
-		delete this->bricks[i];
-		this->bricks.erase(this->bricks.begin(), this->bricks.end());
-	}
+
 }
 
 void BrickManager::update(std::vector<int>* array)

@@ -5,20 +5,20 @@ void Algorithms::initVariables()
 	this->algoFinished = false;
 }
 
-void Algorithms::initBrickManager(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen)
+std::unique_ptr<BrickManager> Algorithms::initBrickManager(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen)
 {
-	this->bricks = new BrickManager(winSize, array, font, true);
+	return std::make_unique<BrickManager>(winSize, array, font, UsefullScreen);
 }
 
 Algorithms::Algorithms(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen)
 {
 	this->initVariables();
-	this->initBrickManager(winSize, array, font, UsefullScreen);
+	this->bricks = this->initBrickManager(winSize, array, font, UsefullScreen);
 }
 
 Algorithms::~Algorithms()
 {
-	delete this->bricks;
+	//delete this->bricks;
 }
 
 void Algorithms::setBricksColorRed(int i, int j)
@@ -71,7 +71,7 @@ void Algorithms::Bubble_Sort(std::vector<int>& array, sf::RenderWindow& window)
 
 					//Render it to the window
 					this->render(window);
-					sf::sleep(sf::milliseconds(200));
+					sf::sleep(sf::milliseconds(PAUSE_TIMER));
 				}
 				//Reset last compared bricks to color black
 				this->setBricksColorBlack(i, j);
@@ -108,6 +108,29 @@ void Algorithms::Selection_Sort(std::vector<int>& array, sf::RenderWindow& windo
 			this->bricks->bricks[min_i]->setTextInt(array[min_i]);
 			this->bricks->bricks[i]->setTextInt(array[i]);
 		}
+}
+
+void Algorithms::Insertion_Sort(std::vector<int>& array, sf::RenderWindow& window)
+{
+	for (int step = 1; step < array.size(); step++)
+	{
+		int key = array[step];
+		int j = step - 1;
+
+		while (j >= 0 && key < array[j])
+		{
+			array[j + 1] = array[j];
+			this->setBricksColorRed(j + 1, j);
+			this->renderWithBreak(window, PAUSE_TIMER);
+			this->bricks->bricks[j + 1]->setTextInt(array[j + 1]);
+			this->renderWithBreak(window, PAUSE_TIMER);
+			this->setBricksColorBlack(j + 1, j);
+			--j;
+		}
+		array[j + 1] = key;
+		this->bricks->bricks[j + 1]->setTextInt(array[j + 1]);
+		this->renderWithBreak(window, PAUSE_TIMER);
+	}
 }
 
 void Algorithms::merge(sf::RenderWindow& window, std::vector<int>& array, int left_index, int mid_index, int right_index)
@@ -214,9 +237,11 @@ void Algorithms::currentSelectedAlgo(std::vector<int>& array, sf::RenderWindow& 
 	{
 		//this->Bubble_Sort(array, window);
 
-		//this->Selection_Sort(array, window);
+		this->Selection_Sort(array, window);
 
-		this->Merge_Sort(window, array, 0 , static_cast<int>(array.size()) - 1);
+		//this->Merge_Sort(window, array, 0 , static_cast<int>(array.size()) - 1);
+
+		//this->Insertion_Sort(array, window);
 
 		this->algoFinished = true;
 	}
@@ -239,5 +264,5 @@ void Algorithms::render(sf::RenderWindow& target)
 void Algorithms::renderWithBreak(sf::RenderWindow& target, unsigned int milliseconds)
 {
 	this->render(target);
-	sf::sleep(sf::milliseconds(milliseconds));
+	//sf::sleep(sf::milliseconds(milliseconds));
 }

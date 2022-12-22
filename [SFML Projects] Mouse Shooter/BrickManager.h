@@ -15,7 +15,7 @@ public:
 	BrickManager(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen);
 	virtual ~BrickManager();
 
-	std::vector<Brick*> bricks;
+	std::vector<std::unique_ptr<Brick>> bricks;
 
 	void update(std::vector<int>* array);
 

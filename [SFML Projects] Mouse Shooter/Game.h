@@ -1,13 +1,12 @@
 #pragma once
 
-#define ARRAY_START_SIZE 90
+#define ARRAY_START_SIZE 99
 
 #include<iostream>
 #include<time.h>
 
 #include"Generation.h"
 #include"Algorithms.h"
-#include"TextureManager.h"
 
 
 class Game

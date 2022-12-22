@@ -139,13 +139,9 @@
     <ClCompile Include="BrickManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Generation.cpp" />
-    <ClCompile Include="Light.cpp" />
-    <ClCompile Include="LightManager.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mouse.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
-    <ClCompile Include="Tracing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithms.h" />
@@ -153,12 +149,8 @@
     <ClInclude Include="BrickManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Generation.h" />
-    <ClInclude Include="Light.h" />
-    <ClInclude Include="LightManager.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Mouse.h" />
-    <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="Tracing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
