@@ -1,5 +1,6 @@
 #pragma once
 
+#define PAUSE_TIMER 10
 #define ARRAY_START_SIZE 99
 
 #include<iostream>
@@ -7,7 +8,6 @@
 
 #include"Generation.h"
 #include"Algorithms.h"
-
 
 class Game
 {

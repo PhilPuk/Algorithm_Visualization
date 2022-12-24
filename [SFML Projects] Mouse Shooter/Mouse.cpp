@@ -1,14 +1,33 @@
 #include "Mouse.h"
 
+
+void Mouse::initVariables()
+{
+	this->mouse_click_puffer = 30.f / 5.f; // 200ms
+	this->mouse_click_time_reach = 0.f;
+
+	this->mouse_Held = false;
+}
+
 //Constructor / Destructor
 Mouse::Mouse()
 {
-
+	this->initVariables();
 }
 
 Mouse::~Mouse()
 {
 
+}
+
+void Mouse::set_Mouse_Click_Time_Reach(float current_Application_Time)
+{
+	this->mouse_click_time_reach = current_Application_Time + this->mouse_click_puffer;
+}
+
+void Mouse::set_Mouse_Held()
+{
+	this->mouse_Held = true;
 }
 
 const sf::Vector2i Mouse::getMousePosWindow() const
@@ -19,6 +38,21 @@ const sf::Vector2i Mouse::getMousePosWindow() const
 const sf::Vector2f Mouse::getMousePosView() const
 {
 	return this->mousePosView;
+}
+
+const bool& Mouse::getMouseLeftClicked() const
+{
+	return sf::Mouse::isButtonPressed(sf::Mouse::Left);
+}
+
+const float& Mouse::get_Mouse_Click_Time_Reach() const
+{
+	return this->mouse_click_time_reach;
+}
+
+const bool& Mouse::getMouseHeld() const
+{
+	return mouse_Held;
 }
 
 //Functions
@@ -37,7 +71,16 @@ void Mouse::updateMousePositions(sf::RenderWindow& window, bool debug)
 	}
 }
 
-void Mouse::update()
+void Mouse::updateMouseHeld()
 {
+	if (!this->getMouseLeftClicked())
+	{
+		this->mouse_Held = false;
+	}
+}
 
+void Mouse::update(sf::RenderWindow& window, bool debug)
+{
+	this->updateMouseHeld();
+	this->updateMousePositions(window, debug);
 }

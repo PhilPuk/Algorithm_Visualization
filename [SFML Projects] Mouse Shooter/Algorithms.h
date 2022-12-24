@@ -13,11 +13,14 @@ private:
 
 	bool algoFinished;
 
-	void initVariables();
+	void initVariables(int pauseTime, int selectedAlgorithm);
 	std::unique_ptr<BrickManager> initBrickManager(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen);
 public:
-	Algorithms(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen);
+	Algorithms(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen, int pauseTime, int selectedAlgorithm);
 	virtual ~Algorithms();
+
+	const int algorithmAmount = 4;
+	uint8_t selectedAlgorithm;
 
 	//BrickManager
 	//BrickManager* bricks;

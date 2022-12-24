@@ -1,6 +1,6 @@
 ﻿#include "Algorithms.h"
 
-void Algorithms::initVariables()
+void Algorithms::initVariables(int pauseTime, int selectedAlgorithm)
 {
 	this->algoFinished = false;
 }
@@ -10,9 +10,9 @@ std::unique_ptr<BrickManager> Algorithms::initBrickManager(sf::Vector2u& winSize
 	return std::make_unique<BrickManager>(winSize, array, font, UsefullScreen);
 }
 
-Algorithms::Algorithms(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen)
+Algorithms::Algorithms(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen, int pauseTime, int selectedAlgorithm)
 {
-	this->initVariables();
+	this->initVariables(pauseTime, selectedAlgorithm);
 	this->bricks = this->initBrickManager(winSize, array, font, UsefullScreen);
 }
 
