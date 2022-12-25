@@ -235,9 +235,9 @@ void Algorithms::currentSelectedAlgo(std::vector<int>& array, sf::RenderWindow& 
 {
 	if (!this->algoFinished)
 	{
-		//this->Bubble_Sort(array, window);
+		this->Bubble_Sort(array, window);
 
-		this->Selection_Sort(array, window);
+		//this->Selection_Sort(array, window);
 
 		//this->Merge_Sort(window, array, 0 , static_cast<int>(array.size()) - 1);
 

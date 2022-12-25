@@ -5,21 +5,29 @@ void Settings::initVariables(sf::Color menu_color)
 	this->goBack = false;
 	this->Menu_Color = menu_color;
 
+	this->selected_Algo = -1;
+
 	this->Menu_Navigation_Index = 0;
 	this->Navigation_Index_Changed = false;
 }
 
 void Settings::initTexts(sf::Font& font, sf::Vector2f textStartPos, float spacingY)
 {
+	int i = 0;
 	sf::Text baseText("", font, 24);
 	baseText.setFillColor(sf::Color::White);
 	baseText.setPosition(textStartPos);
-	for (int i = 0; i < sizeof(algo_Names) / sizeof(algo_Names[0]); i++)
+	for (i; i < sizeof(algo_Names) / sizeof(algo_Names[0]); i++)
 	{
 		baseText.setString(algo_Names[i]);
 		this->Texts.push_back(std::make_unique<sf::Text>(baseText));
 		this->Texts[i]->setPosition(textStartPos.x, textStartPos.y + spacingY * i);
 	}
+
+	this->Texts.push_back(std::make_unique<sf::Text>(baseText));
+	this->Texts[i]->setCharacterSize(34);
+	this->Texts[i]->setPosition(textStartPos.x, textStartPos.y - spacingY * 1.1f);
+	this->Texts[i]->setString("Current: NONE");
 }
 
 //Menu_Navigation
@@ -121,16 +129,27 @@ void Settings::pollEvents(sf::RenderWindow& window)
 	}
 }
 
+void Settings::updateCurrentlySelected(int index)
+{
+	this->selected_Algo = index;
+	std::stringstream s;
+	s << "Current: " << this->algo_Names[index];
+	this->Texts[4]->setString(s.str());
+}
+
 void Settings::updateText()
 {
 	//Changes color of currently selected option 
 //Resets other to standart color
-	if (this->Navigation_Index_Changed)
+	if (this->Navigation_Index_Changed && mouse.getMouseLeftClicked())
 	{
-		for (int i = 0; i < this->Texts.size(); i++)
+		for (int i = 0; i < this->Texts.size() - 1; i++)
 		{
 			if (i == this->Menu_Navigation_Index)
-				this->Texts[i]->setFillColor(sf::Color::Magenta);
+			{
+					this->updateCurrentlySelected(i);
+					this->Texts[i]->setFillColor(sf::Color::Magenta);
+			}
 			else
 				this->Texts[i]->setFillColor(this->Menu_Color);
 		}

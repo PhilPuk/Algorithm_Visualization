@@ -5,7 +5,7 @@
 #include<memory>
 #include"BrickManager.h"
 
-#define PAUSE_TIMER 10
+#define PAUSE_TIMER 1
 
 class Algorithms
 {

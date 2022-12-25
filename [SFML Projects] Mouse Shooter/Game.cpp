@@ -103,6 +103,7 @@ void Game::update()
 {
     this->pollEvents();
 
+    if(!this->algo->getAlgoFinished())
     this->algo->currentSelectedAlgo(this->gen->array, *this->window);
 
     if (!this->sortedArrayPrinted)

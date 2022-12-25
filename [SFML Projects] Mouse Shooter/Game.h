@@ -1,6 +1,6 @@
 #pragma once
 
-#define PAUSE_TIMER 10
+#define PAUSE_TIMER 1
 #define ARRAY_START_SIZE 99
 
 #include<iostream>

@@ -21,6 +21,8 @@ private:
 	bool goBack;
 	Mouse mouse;
 
+	int selected_Algo;
+
 	sf::Color Menu_Color;
 
 	//Menu_Navigation
@@ -44,6 +46,7 @@ public:
 	void pollEventsKeyPressed(sf::Event& ev);
 	void pollEvents(sf::RenderWindow& window);
 
+	void updateCurrentlySelected(int index);
 	void updateText();
 	void update(sf::RenderWindow& window);
 
