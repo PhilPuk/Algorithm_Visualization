@@ -3,6 +3,7 @@
 void Algorithms::initVariables(int pauseTime, int selectedAlgorithm)
 {
 	this->algoFinished = false;
+	this->goBack = false;
 }
 
 std::unique_ptr<BrickManager> Algorithms::initBrickManager(sf::Vector2u& winSize, std::vector<int>& array, sf::Font& font, bool UsefullScreen)
@@ -72,9 +73,11 @@ void Algorithms::Bubble_Sort(std::vector<int>& array, sf::RenderWindow& window)
 					//Render it to the window
 					this->render(window);
 					sf::sleep(sf::milliseconds(PAUSE_TIMER));
+					this->update(window);
 				}
 				//Reset last compared bricks to color black
 				this->setBricksColorBlack(i, j);
+				if (this->goBack) return;
 			}
 		}
 }
@@ -95,18 +98,20 @@ void Algorithms::Selection_Sort(std::vector<int>& array, sf::RenderWindow& windo
 					this->bricks->bricks[min_i]->shape.setOutlineColor(sf::Color::Red);
 				}
 				this->render(window);
-				sf::sleep(sf::milliseconds(20));
+				sf::sleep(sf::milliseconds(PAUSE_TIMER));
 				this->bricks->bricks[j]->shape.setOutlineColor(sf::Color::Black);
+				this->update(window);
 			}
 			//Swop values.
 			this->swopTwoInt(&array[min_i], &array[i]);
 			this->setBricksColorRed(i, min_i);
 			//Reset last compared bricks to color black
 			this->render(window);
-			sf::sleep(sf::milliseconds(300));
+			sf::sleep(sf::milliseconds(PAUSE_TIMER));
 			this->setBricksColorBlack(i, min_i);
 			this->bricks->bricks[min_i]->setTextInt(array[min_i]);
 			this->bricks->bricks[i]->setTextInt(array[i]);
+			if (this->goBack) return;
 		}
 }
 
@@ -126,10 +131,12 @@ void Algorithms::Insertion_Sort(std::vector<int>& array, sf::RenderWindow& windo
 			this->renderWithBreak(window, PAUSE_TIMER);
 			this->setBricksColorBlack(j + 1, j);
 			--j;
+			this->update(window);
 		}
 		array[j + 1] = key;
 		this->bricks->bricks[j + 1]->setTextInt(array[j + 1]);
 		this->renderWithBreak(window, PAUSE_TIMER);
+		if (this->goBack) return;
 	}
 }
 
@@ -222,7 +229,7 @@ void Algorithms::Merge_Sort(sf::RenderWindow& window, std::vector<int>& array, i
 	if (left_index < right_index)
 	{
 		mid_index = left_index + (right_index - left_index) / 2;
-
+		if (this->goBack) return;
 		Merge_Sort(window, array, left_index, mid_index);
 		Merge_Sort(window, array, mid_index + 1, right_index);
 
@@ -231,20 +238,47 @@ void Algorithms::Merge_Sort(sf::RenderWindow& window, std::vector<int>& array, i
 }
 
 
-void Algorithms::currentSelectedAlgo(std::vector<int>& array, sf::RenderWindow& window)
+void Algorithms::currentSelectedAlgo(std::vector<int>& array, sf::RenderWindow& window, int& indexOfAlgorithm)
 {
 	if (!this->algoFinished)
 	{
+		int i = 0;
+		if(indexOfAlgorithm == 0)
 		this->Bubble_Sort(array, window);
-
-		//this->Selection_Sort(array, window);
-
-		//this->Merge_Sort(window, array, 0 , static_cast<int>(array.size()) - 1);
-
-		//this->Insertion_Sort(array, window);
+		else if(indexOfAlgorithm == 1)
+		this->Selection_Sort(array, window);
+		else if (indexOfAlgorithm == 2)
+		this->Insertion_Sort(array, window);
+		else if (indexOfAlgorithm == 3)
+		this->Merge_Sort(window, array, 0 , static_cast<int>(array.size()) - 1);
 
 		this->algoFinished = true;
 	}
+	//Create button to reset algo finished
+}
+
+void Algorithms::pollEvents(sf::RenderWindow& window)
+{
+	sf::Event ev;
+	while (window.pollEvent(ev))
+	{
+		switch (ev.type)
+		{
+		case sf::Event::Closed:
+			this->goBack = true;
+			break;
+		case sf::Event::KeyPressed:
+			if (ev.key.code == sf::Keyboard::Escape)
+				this->goBack = true;
+			break;
+		}
+	}
+}
+
+void Algorithms::update(sf::RenderWindow& window)
+{
+	this->pollEvents(window);
+	mouse.update(window, false);
 }
 
 void Algorithms::renderBrickManager(sf::RenderTarget& target)

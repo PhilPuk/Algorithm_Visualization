@@ -70,13 +70,13 @@ const bool& Game::getEndApplication() const
 }
 
 
-void Game::run()
+void Game::run(int& indexOfAlgorithm)
 {
     //Main loop of the game
 
     while (!endGame)
     {
-        this->update();
+        this->update(indexOfAlgorithm);
 
         this->render();
     }
@@ -99,12 +99,21 @@ void Game::pollEvents()
     }
 }
 
-void Game::update()
+void Game::update(int& indexOfAlgorithm)
 {
     this->pollEvents();
 
-    if(!this->algo->getAlgoFinished())
-    this->algo->currentSelectedAlgo(this->gen->array, *this->window);
+    //if(!this->algo->getAlgoFinished())
+
+    this->algo->currentSelectedAlgo(this->gen->array, *this->window, indexOfAlgorithm);
+
+    //Goes back if esc ingame pressed
+    if (this->algo->goBack)
+    {
+        this->algo->algoFinished = false;
+        this->algo->goBack = false;
+        this->endGame = true;
+    }
 
     if (!this->sortedArrayPrinted)
     {

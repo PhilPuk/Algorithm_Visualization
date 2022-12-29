@@ -21,8 +21,6 @@ private:
 	bool goBack;
 	Mouse mouse;
 
-	int selected_Algo;
-
 	sf::Color Menu_Color;
 
 	//Menu_Navigation
@@ -38,6 +36,8 @@ private:
 public:
 	Settings(sf::Font& font, sf::Vector2f textStartPos, float spacingY, sf::Color menu_color);
 	virtual~Settings();
+
+	int selected_Algo;
 
 	void run(sf::RenderWindow& window);
 

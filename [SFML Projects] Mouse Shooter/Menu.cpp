@@ -144,7 +144,7 @@ Menu::~Menu()
 void Menu::pollGame()
 {
 	//Start button action
-	this->game->run();
+	this->game->run(this->settings->selected_Algo);
 	this->game->resetVariables();
 }
 

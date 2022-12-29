@@ -47,11 +47,11 @@ public:
 	const bool& getEndApplication() const;
 
 	//Main loop
-	void run();
+	void run(int& indexOfAlgorithm);
 
 	//Update
 	void pollEvents();
-	void update();
+	void update(int& indexOfAlgorithm);
 
 	//Render
 	void render();
