@@ -19,7 +19,6 @@ Algorithms::Algorithms(sf::Vector2u& winSize, std::vector<int>& array, sf::Font&
 
 Algorithms::~Algorithms()
 {
-	//delete this->bricks;
 }
 
 void Algorithms::setBricksColorRed(int i, int j)
