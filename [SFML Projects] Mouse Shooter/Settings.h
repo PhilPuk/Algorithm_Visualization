@@ -5,12 +5,16 @@
 #include<vector>
 #include<memory>
 #include"Mouse.h"
+#include"Button.h"
+#include"Generation.h"
 
 #include<SFML/Graphics.hpp>
 #include<SFML/System.hpp>
 #include<SFML/Window.hpp>
 #include<SFML/Audio.hpp>
 #include<SFML/Network.hpp>
+
+//Button needs parameters!
 
 class Settings
 {
@@ -22,6 +26,8 @@ private:
 	Mouse mouse;
 
 	sf::Color Menu_Color;
+
+	std::unique_ptr<Button()> button;
 
 	//Menu_Navigation
 	short Menu_Navigation_Index;
@@ -39,16 +45,17 @@ public:
 
 	int selected_Algo;
 
-	void run(sf::RenderWindow& window);
+	void run(sf::RenderWindow& window, Generation& gen);
 
 	void EventEnterPressed(sf::Event& ev);
 	void EventMenuNavigation(sf::Event& ev);
 	void pollEventsKeyPressed(sf::Event& ev);
 	void pollEvents(sf::RenderWindow& window);
 
+	void updateButton(Generation& gen);
 	void updateCurrentlySelected(int index);
 	void updateText();
-	void update(sf::RenderWindow& window);
+	void update(sf::RenderWindow& window, Generation& gen);
 
 	void renderTexts(sf::RenderTarget& target);
 	void render(sf::RenderWindow& window);

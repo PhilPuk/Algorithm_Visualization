@@ -151,7 +151,7 @@ void Menu::pollGame()
 void Menu::pollSettings()
 {
 	//Settings button action
-	this->settings->run(*this->window);
+	this->settings->run(*this->window, *this->game->gen);
 }
 
 void Menu::pollStop()

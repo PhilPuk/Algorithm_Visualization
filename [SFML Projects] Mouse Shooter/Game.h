@@ -19,9 +19,6 @@ private:
 	//Events
 	sf::Event ev;
 
-	//Generation of Array
-	Generation* gen;
-
 	//Algorithms
 	Algorithms* algo;
 
@@ -38,6 +35,9 @@ private:
 public:
 	Game(sf::RenderWindow* window, sf::Font& font);
 	virtual ~Game();
+
+	//Generation of Array
+	Generation* gen;
 
 	void CloseApplication();
 	void resetVariables();

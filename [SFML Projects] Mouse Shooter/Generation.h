@@ -22,6 +22,8 @@ public:
 	Generation(int sizeOfArray, int NumberCap, bool randomizeNumbers, bool doubleNumbers);
 	virtual ~Generation();
 
+	void shuffleArray();
+
 	std::vector<int> array;
 
 	void printArrayInConsole();

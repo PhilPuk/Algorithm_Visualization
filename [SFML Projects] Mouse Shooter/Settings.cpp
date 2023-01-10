@@ -72,11 +72,11 @@ Settings::~Settings()
 
 }
 
-void Settings::run(sf::RenderWindow& window)
+void Settings::run(sf::RenderWindow& window, Generation& gen)
 {
 	while (!this->goBack)
 	{
-		this->update(window);
+		this->update(window, gen);
 
 		this->render(window);
 	}
@@ -129,6 +129,12 @@ void Settings::pollEvents(sf::RenderWindow& window)
 	}
 }
 
+void Settings::updateButton(Generation& gen)
+{
+	if(button.get_button_clicked(mouse.getMousePosView()))
+		gen.shuffleArray();
+}
+
 void Settings::updateCurrentlySelected(int index)
 {
 	this->selected_Algo = index;
@@ -157,11 +163,13 @@ void Settings::updateText()
 	}
 }
 
-void Settings::update(sf::RenderWindow& window)
+void Settings::update(sf::RenderWindow& window, Generation& gen)
 {
 	this->pollEvents(window);
 
 	this->mouse.update(window, false);
+
+	this->updateButton(gen);
 
 	this->navigateWithMouse();
 
