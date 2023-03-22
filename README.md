@@ -1,3 +1,3 @@
-[SFML Projects] 2D 360 Degree shooting
+[SFML Projects]
 
 Unfinished project.
